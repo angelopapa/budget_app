@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useState } from "react";
-import { AppContext } from '../context/AppContext';
+import React, { useState } from "react";
+
 
 export const Currency = () => {
   const [selectedCurrency, setSelectedCurrency] = useState('Currency');

@@ -60,6 +60,7 @@ const AllocationForm = () => {
                     </select>
 
                     <input
+                        placeholder='€'
                         required='required'
                         type='number'
                         id='cost'
