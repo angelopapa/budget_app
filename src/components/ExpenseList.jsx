@@ -10,13 +10,13 @@ const ExpenseList = () => {
         <table className='table'>
             <thead className="thead-light">
                 <tr>
-                    <th scope="col">Department</th>
-                    <th scope="col">Allocated Budget</th>
-                    <th scope="col">Increase by 10</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col" className='text-center text-uppercase'>Department</th>
+                    <th scope="col" className='text-center text-uppercase'>Allocated Budget</th>
+                    <th scope="col" className='text-center text-uppercase'>Increase</th>
+                    <th scope="col" className='text-center text-uppercase'>Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className='text-center'>
                 {expenses.map((expense) => (
                     <ExpenseItem id={expense.id} key={expense.id} name={expense.name} cost={expense.cost} />
                 ))}

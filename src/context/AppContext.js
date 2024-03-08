@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import '../App.css';
 
 // 5. The reducer - this is used to update the state, based on the action
 export const AppReducer = (state, action) => {
@@ -43,20 +44,40 @@ export const AppReducer = (state, action) => {
                     ...state,
                     expenses: [...red_expenses],
                 };
-            case 'DELETE_EXPENSE':
-            action.type = "DONE";
-            state.expenses.map((currentExp)=> {
-                if (currentExp.name === action.payload) {
-                    budget = state.budget + currentExp.cost
-                    currentExp.cost =  0;
-                }
-                return currentExp
-            })
-            action.type = "DONE";
-            return {
-                ...state,
-                budget
-            };
+                case 'DELETE_EXPENSE':
+                    const updatedExpenses = state.expenses.map((currentExp) => {
+                        if (currentExp.name === action.payload) {
+                            const updatedCost = Math.max(0, currentExp.cost - 10);
+                            budget = state.budget + (currentExp.cost - updatedCost);
+                            currentExp.cost = updatedCost;
+                        }
+                        return currentExp;
+                    });
+        
+                    return {
+                        ...state,
+                        expenses: updatedExpenses,
+                        budget
+                    };
+        
+                case 'DOUBLE_CLICK':
+                    if (state.expenses.find(expense => expense.name === action.payload)) {
+                        const resetExpenses = state.expenses.map((currentExp) => {
+                            if (currentExp.name === action.payload) {
+                                budget += currentExp.cost;
+                                currentExp.cost = 0;
+                            }
+                            return currentExp;
+                        });
+        
+                        return {
+                            ...state,
+                            expenses: resetExpenses,
+                            budget
+                        };
+                    } else {
+                        return state;
+                    }
         case 'SET_BUDGET':
             action.type = "DONE";
             state.budget = action.payload;

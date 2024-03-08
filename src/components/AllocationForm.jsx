@@ -6,10 +6,12 @@ const AllocationForm = () => {
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
-
+    
+    
     const submitEvent = () => {
+        
         if (cost > remaining) {
-            alert("The value cannot exceed remaining funds £" + remaining);
+            alert("The value cannot exceed remaining funds € " + remaining);
             setCost("");
             return;
         }
@@ -34,8 +36,8 @@ const AllocationForm = () => {
 
     return (
         <div>
-            <div className='row'>
-                <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
+            <div className='row mt-5 '>
+                <div className="input-group mb-3 justify-content-center" style={{ marginLeft: '2rem' }}>
                     <div className="input-group-prepend">
                         <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
                     </div>
@@ -66,11 +68,15 @@ const AllocationForm = () => {
                         onChange={(event) => setCost(event.target.value)}>
                     </input>
 
-                    <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
-                        Save
-                    </button>
+                    
+                    <button type="button" class="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem', fontSize: '20px' }}>Save</button>
                 </div>
             </div>
+            {cost > remaining && (
+        <div className="alert alert-danger" role="alert">
+          Il costo supera il saldo rimanente.
+        </div>
+      )}
         </div>
     );
 };

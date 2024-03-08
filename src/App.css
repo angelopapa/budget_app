@@ -1,5 +1,23 @@
 .App {
   text-align: center;
+
+}
+
+button#currency {
+  position: relative;
+  color: var(--bs-alert-color);
+  background-color: var(--bs-alert-bg);
+  border: none;
+  border-radius: var(--bs-alert-border-radius);
+}
+
+div#budget {
+  position: relative;
+  color: var(--bs-alert-color);
+  background-color: var(--bs-alert-bg);
+  border: none;
+  border-radius: var(--bs-alert-border-radius);
+  width: 17rem
 }
 
 .App-logo {
@@ -24,6 +42,14 @@
   color: white;
 }
 
+.ired,
+.igreen {
+  border: none;
+  background-color: #ffffff;
+  font-size: 1.5rem;
+}
+
+
 .App-link {
   color: #61dafb;
 }
@@ -32,7 +58,12 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+label.input-group-text {
+  height: 3rem;
 }
